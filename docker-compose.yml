@@ -1,0 +1,17 @@
+version: '2.4'
+networks:
+   ssr_network:
+      driver: bridge
+services:
+   ssr:
+      container_name: ssr
+      build:
+         context: ./
+         dockerfile: Dockerfile
+      ports:
+         - '3011:3000'
+      volumes:
+         - ./:/app
+      tty: true
+      networks:
+         - ssr_network

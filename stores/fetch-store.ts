@@ -11,7 +11,9 @@ export const useFetchStore = defineStore('fetchStore', {
 
     actions: {
         async get_users() {
-            return await use_api().get('https://jsonplaceholder.typicode.com/users')
+            const response = await use_api().get('https://jsonplaceholder.typicode.com/users')
+            this.users = response
+            return response
         }
     },
 })

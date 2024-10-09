@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {useFetchStore} from "~/stores/fetch-store";
 const fetch_store = useFetchStore()
-await useAsyncData(() => fetch_store.get_users())
+fetch_store.get_users()
 </script>
 <template>
   <div>

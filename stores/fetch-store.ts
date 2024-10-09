@@ -3,17 +3,18 @@ import type {IFetchStore} from "~/types/fetch-store";
 import {use_api} from "~/composable/use_api";
 
 export const useFetchStore = defineStore('fetchStore', {
-    state: (): IFetchStore => ({
-        users: []
-    }),
+    state: (): IFetchStore => {
+        return {
+            users: []
+        }
+    },
 
     getters: {},
 
     actions: {
         async get_users() {
-            const response = await use_api().get('https://jsonplaceholder.typicode.com/users')
-            this.users = response
-            return response
+            const response = await useAsyncData(() => use_api().get('https://jsonplaceholder.typicode.com/users'))
+            this.users = response.data.value
         }
     },
 })
